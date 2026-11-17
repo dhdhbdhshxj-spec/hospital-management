@@ -26,7 +26,7 @@ public class DoctorDAO {
                     rs.getInt("department_id")
                 ));
             }
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return list;
@@ -41,7 +41,7 @@ public class DoctorDAO {
             ps.setString(3, phone);
             ps.setInt(4, deptId);
             return ps.executeUpdate() > 0;
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
             return false;
         }
@@ -53,7 +53,7 @@ public class DoctorDAO {
              PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setInt(1, id);
             return ps.executeUpdate() > 0;
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
             return false;
         }

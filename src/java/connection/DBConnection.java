@@ -5,12 +5,34 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DBConnection {
-    private static final String URL = "jdbc:mysql://localhost:3306/hospital_management";
-    private static final String USER = "root";
-    private static final String PASSWORD = ""; // Agar XAMPP me root password set hai toh yahan likhein
+    private static final String DEFAULT_URL = "jdbc:mysql://localhost:3306/hospital_management?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
+    private static final String DEFAULT_USER = "root";
+    private static final String DEFAULT_PASSWORD = "";
 
-    public static Connection getConnection() throws ClassNotFoundException, SQLException {
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        return DriverManager.getConnection(URL, USER, PASSWORD);
+    static {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            System.err.println("MySQL JDBC Driver not found: " + e.getMessage());
+        }
+    }
+
+    public static Connection getConnection() throws SQLException {
+        String url = System.getenv("DB_URL");
+        if (url == null || url.trim().isEmpty()) {
+            url = DEFAULT_URL;
+        }
+
+        String user = System.getenv("DB_USER");
+        if (user == null || user.trim().isEmpty()) {
+            user = DEFAULT_USER;
+        }
+
+        String password = System.getenv("DB_PASSWORD");
+        if (password == null) {
+            password = DEFAULT_PASSWORD;
+        }
+
+        return DriverManager.getConnection(url, user, password);
     }
 }

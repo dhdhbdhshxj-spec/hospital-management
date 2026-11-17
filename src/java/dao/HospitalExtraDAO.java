@@ -24,7 +24,7 @@ public class HospitalExtraDAO {
                     rs.getString("location")
                 ));
             }
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return list;
@@ -37,7 +37,7 @@ public class HospitalExtraDAO {
             ps.setString(1, name);
             ps.setString(2, location);
             return ps.executeUpdate() > 0;
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
             return false;
         }
@@ -59,7 +59,7 @@ public class HospitalExtraDAO {
                     rs.getDate("discharge_date")
                 ));
             }
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return list;
@@ -73,7 +73,7 @@ public class HospitalExtraDAO {
             ps.setString(2, room);
             ps.setDate(3, admDate);
             return ps.executeUpdate() > 0;
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
             return false;
         }
@@ -85,7 +85,7 @@ public class HospitalExtraDAO {
              PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setInt(1, admissionId);
             return ps.executeUpdate() > 0;
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
             return false;
         }
@@ -107,7 +107,7 @@ public class HospitalExtraDAO {
                     rs.getDate("bill_date")
                 ));
             }
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return list;
@@ -122,7 +122,7 @@ public class HospitalExtraDAO {
             ps.setString(3, status);
             ps.setDate(4, billDate);
             return ps.executeUpdate() > 0;
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
             return false;
         }
@@ -134,7 +134,7 @@ public class HospitalExtraDAO {
              PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setInt(1, billId);
             return ps.executeUpdate() > 0;
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
             return false;
         }

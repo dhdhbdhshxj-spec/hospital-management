@@ -27,7 +27,7 @@ public class AppointmentDAO {
                     rs.getString("status")
                 ));
             }
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return list;
@@ -43,7 +43,7 @@ public class AppointmentDAO {
             ps.setTime(4, a.getAppointmentTime());
             ps.setString(5, a.getStatus());
             return ps.executeUpdate() > 0;
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
             return false;
         }
@@ -56,7 +56,7 @@ public class AppointmentDAO {
             ps.setString(1, status);
             ps.setInt(2, id);
             return ps.executeUpdate() > 0;
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
             return false;
         }
@@ -68,7 +68,7 @@ public class AppointmentDAO {
              PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setInt(1, id);
             return ps.executeUpdate() > 0;
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
             return false;
         }

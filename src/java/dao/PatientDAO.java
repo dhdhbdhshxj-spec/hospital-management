@@ -23,7 +23,7 @@ public class PatientDAO {
             ps.setString(5, p.getAddress());
             ps.setString(6, p.getDisease());
             return ps.executeUpdate() > 0;
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
             return false;
         }
@@ -47,7 +47,7 @@ public class PatientDAO {
                     rs.getString("disease")
                 ));
             }
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return list;
@@ -72,7 +72,7 @@ public class PatientDAO {
                     );
                 }
             }
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return null;
@@ -91,7 +91,7 @@ public class PatientDAO {
             ps.setString(6, p.getDisease());
             ps.setInt(7, p.getPatientId());
             return ps.executeUpdate() > 0;
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
             return false;
         }
@@ -104,7 +104,7 @@ public class PatientDAO {
              PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setInt(1, id);
             return ps.executeUpdate() > 0;
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
             return false;
         }
@@ -133,7 +133,7 @@ public class PatientDAO {
                     ));
                 }
             }
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return list;
